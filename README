@@ -1,1 +1,95 @@
+Ground-News-Inspired Intelligence Pipeline
+Python · APIs · Sentiment Analysis · LLM Summarization
+This project demonstrates how to build a Ground News–style intelligence pipeline using Python, external APIs, lightweight NLP, and large language models (LLMs).
+The goal is not just to summarize news, but to:
+•	aggregate coverage across many outlets
+•	surface political bias as metadata
+•	weight stories by recency
+•	analyze sentiment by perspective
+•	produce structured, dashboard-ready insights
+The same architectural pattern has been used in enterprise environments, including PySpark pipelines in Microsoft Fabric to summarize ServiceNow outages for Power BI ingestion.
 
+What This Project Does
+At a high level, the pipeline:
+1.	Ingests news articles from a search API with topic, geography, and domain constraints
+2.	Normalizes timestamps and applies recency decay weighting
+3.	Classifies sources by political leaning and region
+4.	Calculates sentiment using fast, explainable NLP methods
+5.	Uses GPT-style LLMs to synthesize weekly summaries via a map–reduce pattern
+6.	Outputs structured results suitable for dashboards and reports
+
+This produces insights such as:
+•	dominant narratives
+•	underrepresented viewpoints (“blind spots”)
+•	tone differences across political leanings
+•	concise weekly intelligence briefs
+
+Why This Matters
+This project shows how to:
+•	combine traditional data engineering with LLMs
+•	treat bias, sentiment, and recency as first-class signals
+•	keep LLM usage structured, deterministic, and auditable
+•	scale the approach from notebooks to enterprise platforms
+It’s not about replacing analytics — it’s about augmenting it with synthesis.
+
+Tech Stack
+•	Python
+o	requests, pandas, datetime
+•	News Search API
+o	Domain-filtered, rate-limited ingestion
+•	NLP
+o	NLTK VADER sentiment analysis
+o	Keyword-based fallback sentiment
+•	LLMs
+o	Azure OpenAI / GPT-style models
+o	Strict JSON outputs
+o	Map–reduce summarization pattern
+•	Visualization / Consumption
+o	HTML rendering (demo)
+o	Power BI (enterprise use case)
+
+Output Examples
+The pipeline produces:
+•	Weekly topic summaries
+•	Key developments
+•	Simple timelines
+•	Open questions
+•	Political leaning distributions
+•	Sentiment by ideological bucket
+•	“Blind spot” identification
+All outputs are structured for direct BI ingestion.
+
+Getting Started
+Prerequisites
+•	Python 3.9+
+•	API access token for the news search provider
+•	Azure OpenAI (or compatible GPT endpoint)
+Install Dependencies
+pip install pandas requests nltk rapidfuzz openai
+Configure API Keys
+Set your tokens in the script:
+BRAVE_TOKEN = "YOUR_API_KEY"
+openai_api_key = "YOUR_OPENAI_KEY"
+Run the Pipeline
+Execute the notebook or script end-to-end to:
+•	ingest data
+•	enrich it
+•	summarize it
+•	render insights
+
+Notes on Responsible Use
+•	Political leaning classifications are heuristics, not judgments
+•	Sentiment scores are directional, not definitive
+•	LLM outputs are constrained to provided context
+•	The system avoids speculation by design
+This is meant for decision support, not truth arbitration.
+
+Future Enhancements
+•	Spark-native version (Fabric / Databricks)
+•	Topic clustering & trend detection
+•	Multilingual ingestion
+•	Streaming / near-real-time processing
+•	Automated Power BI dataset refresh
+
+License
+MIT License, feel free to reuse, adapt, and extend.
